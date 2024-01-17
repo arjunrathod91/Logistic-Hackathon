@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { MyContext } from "../../Contexts/AllContext";
 import axios from "axios";
+import logo from '../../assets/logo.png'
 
 const ContactDetails = () => {
   const { setContact1, setContact2, setTollFreeNumber, setAddress } = useContext(MyContext)
@@ -12,31 +13,10 @@ const ContactDetails = () => {
     nevigate('/volvarify')
 
   }
-  // const showPosition = (position) => {
-  //   const userLatitude = position.coords.latitude;
-  //   const userLongitude = position.coords.longitude;
-  //   setLatitude(userLatitude)
-  //   setLongitude(userLongitude)
-  //   console.log(latitude)
-  //   console.log(longitude)
-
-  // };
-  // const getLocation = () => {
-  //   if (navigator.geolocation) {
-  //     navigator.geolocation.getCurrentPosition(showPosition, ()=>console.log('error'));
-  //   } else {
-  //     console.log("Geolocation is not supported by this browser");
-  //   }
-
-  // };
-  // const handleLocation=()=>{
-  //   getLocation()
-  // }
-
   return (
     <>
       <div className="d-flex container-fluid vh-100 flex-column justify-content-center align-items-center">
-        <div className="circle"></div>
+      <img src={logo} className="circle" />
         <strong>HelpYours !</strong>
         <div className="organization-form mt-5 d-flex flex-column justify-content-start p-3">
           <strong className="mb-4" style={{ fontSize: "24px" }}>

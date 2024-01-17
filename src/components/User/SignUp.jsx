@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { MyContext } from "../../Contexts/AllContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleCheck, faCircleXmark } from "@fortawesome/free-solid-svg-icons";
+import logo from '../../assets/logo.png'
 
 const Login = () => {
 
@@ -23,7 +24,7 @@ const Login = () => {
 
   const submitData=(e)=>{
     e.preventDefault()
-    axios.post('http://localhost:3002/newUser',{username,email,password,confirmpassword,location,contact})
+    axios.post('http://localhost:3423/newUser',{username,email,password,confirmpassword,location,contact})
     .then(data=>{
       console.log(data.data)
       setUserData(data.data)
@@ -51,7 +52,7 @@ const Login = () => {
       <div className={failed ? 'alert alert-danger w-[300px] text-center' : 'd-none'} role="alert">
       <FontAwesomeIcon icon={faCircleXmark} className='mr-3'/> Sign Up Failed !
       </div>
-        <div className="circle"></div>
+      <img src={logo} className="circle" />
         <div className="text-center">
           <h4 className="fw-bold mb-4">HelpYours!</h4>
         </div>
@@ -125,7 +126,7 @@ const Login = () => {
 
        <button type="submit" className="signupbtn fw-bold" >Sign Up</button>
       </form>
-      <p style={{color:"#48B09D",marginTop:"10px"}}>Already have an account ?<span className="fw-bold"><Link style={{color: "#40C6AE"}} to="/login">Log In</Link></span> </p>
+      <p style={{color:'#48B09D',marginTop:'10px'}}>Already have an account ?<span className="fw-bold"><Link style={{color: "#40C6AE"}} to="/login">Log In</Link></span> </p>
 
       </div>
     </>

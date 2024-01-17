@@ -4,6 +4,7 @@ import { Link, Navigate, useNavigate } from 'react-router-dom'
 import { MyContext } from '../../Contexts/AllContext'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleCheck, faCircleXmark } from '@fortawesome/free-solid-svg-icons'
+import logo from '../../assets/logo.png'
 
 const EditInfo = () => {
   const [success, setSuccess] = useState(false)
@@ -22,7 +23,7 @@ const EditInfo = () => {
 
   const submit = (e) => {
     e.preventDefault()
-    axios.put(`http://localhost:3002/editUser/${userId}`, { username, email, password, contact, location })
+    axios.put(`http://localhost:3423/editUser/${userId}`, { username, email, password, contact, location })
       .then((data) => {
         console.log(userData._id)
         console.log(userId)
@@ -45,12 +46,12 @@ const EditInfo = () => {
   return (
     <div className="d-flex container-fluid vh-100 flex-column justify-content-center align-items-center">
       <div className={success ? 'alert alert-success w-[300px] text-center' : 'd-none'} role="alert">
-      <FontAwesomeIcon icon={faCircleCheck} className='mr-3'/>Login Successfully
+      <FontAwesomeIcon icon={faCircleCheck} className='mr-3'/>Information Saved Successfully
       </div>
       <div className={failed ? 'alert alert-danger w-[300px] text-center' : 'd-none'} role="alert">
-      <FontAwesomeIcon icon={faCircleXmark} className='mr-3'/>Login Failed
+      <FontAwesomeIcon icon={faCircleXmark} className='mr-3'/>Failed to Save
       </div>
-      <div className="circle"></div>
+      <img src={logo} className="circle" />
       <strong>HelpYours !</strong>
       <div className="organization-form mt-5 d-flex flex-column justify-content-start p-3">
         <strong className="mb-4" style={{ fontSize: "24px" }}>

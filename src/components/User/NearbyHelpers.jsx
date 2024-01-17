@@ -11,7 +11,7 @@ function NearbyHelpers() {
   const navigate = useNavigate()
   useEffect(() => {
     const help = requestData.help
-    axios.get('http://localhost:3002/nearbyVol',{
+    axios.get('http://localhost:3423/nearbyVol',{
       params:{help}
     })
       .then((data) => {
@@ -25,7 +25,7 @@ function NearbyHelpers() {
     console.log('clicked')
     console.log(item._id)
     const userId = item._id
-    axios.get(`http://localhost:3002/volunteerData/${userId}`)
+    axios.get(`http://localhost:3423/volunteerData/${userId}`)
     .then(data=>{
       console.log(data.data)
       setVolData(data.data)

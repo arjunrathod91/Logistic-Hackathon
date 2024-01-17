@@ -6,6 +6,7 @@ import { FormSelect } from "react-bootstrap";
 import emailjs from "@emailjs/browser";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleCheck, faCircleXmark } from "@fortawesome/free-solid-svg-icons";
+import logo from '../../assets/logo.png'
 
 const VolVerify = () => {
 
@@ -23,7 +24,7 @@ const VolVerify = () => {
   const navigate = useNavigate()
   const sendEmail = (e) => {
     e.preventDefault();
-    axios.post('http://localhost:3002/setVol', { username, email, password, confirmpassword, organizationName, organizationHead, aboutOrganization, area, numberOfWorkers, experience, licence, contact1, contact2, tollFreeNumber, address})
+    axios.post('http://localhost:3423/setVol', { username, email, password, confirmpassword, organizationName, organizationHead, aboutOrganization, area, numberOfWorkers, experience, licence, contact1, contact2, tollFreeNumber, address})
     .then(details => {
       console.log(details.data)
       setVolData(details.data)
@@ -80,7 +81,7 @@ const VolVerify = () => {
         <FontAwesomeIcon icon={faCircleXmark} className='mr-3' />Invalid Otp
       </div>
       <div>
-        <p className="circle"></p>
+      <img src={logo} className="circle" />
         <h6 className="fw-bold" style={{ color: "#000" }}>
           HelpYours!
         </h6>

@@ -19,14 +19,9 @@ const UserInfo = () => {
                         <p><span className='fw-bold'>Help :</span>{userData.help}</p>
                     </div>
                 </div>
-                <div className='container-fluid center-flex flex-col mt-10'>
-                    <div>
+                <div className='container-fluid mt-10 ml-10'>
                         <strong>{userData.location}</strong>
-                    </div>
-                    <div>
-                        <p onClick={''}><FontAwesomeIcon icon={faPhone} className='mr-2'/> {userData.contact}</p>
-                    </div>
-                    
+                        <p onClick={''} className=''><FontAwesomeIcon icon={faPhone} className='mr-2'/> {userData.contact}</p>
                 </div>
             </div>
         </div>

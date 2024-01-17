@@ -1,8 +1,7 @@
 import React, { useContext, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleArrowRight } from "@fortawesome/free-solid-svg-icons";
-
-
+import logo from '../../assets/logo.png'
 import { Link, useNavigate } from "react-router-dom";
 import { MyContext } from "../../Contexts/AllContext";
 import { FormSelect } from "react-bootstrap";
@@ -20,7 +19,7 @@ const Organization = () => {
   }
   return (
     <div className="d-flex container-fluid vh-100 flex-column justify-content-center align-items-center">
-      <div className="circle"></div>
+      <img src={logo} className="circle" />
       <strong>HelpYours !</strong>
       <div className="organization-form mt-5 d-flex flex-column justify-content-start p-3">
         <strong className="mb-4" style={{ fontSize: "24px" }}>

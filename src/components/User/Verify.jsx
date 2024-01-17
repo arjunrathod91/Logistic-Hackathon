@@ -5,6 +5,7 @@ import Select from 'react-select';
 import emailjs from "@emailjs/browser";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleCheck, faCircleXmark } from "@fortawesome/free-solid-svg-icons";
+import logo from '../../assets/logo.png'
 
 const Verify = () => {
   const [submitted, setSubmitted] = useState(false)
@@ -71,7 +72,7 @@ const Verify = () => {
         <FontAwesomeIcon icon={faCircleXmark} className='mr-3' />Invalid Otp
       </div>
       <div>
-        <p className="circle"></p>
+      <img src={logo} className="circle" />
         <h6 className="fw-bold" style={{ color: "#000" }}>
           HelpYours!
         </h6>

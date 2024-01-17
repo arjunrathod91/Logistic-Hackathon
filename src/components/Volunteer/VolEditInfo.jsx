@@ -4,6 +4,8 @@ import { Link, Navigate, useNavigate } from 'react-router-dom'
 import { MyContext } from '../../Contexts/AllContext'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleCheck, faCircleXmark } from '@fortawesome/free-solid-svg-icons'
+import logo from '../../assets/logo.png'
+import { FormSelect } from 'react-bootstrap'
 
 const VolEditInfo = () => {
   const [success, setSuccess] = useState(false)
@@ -20,10 +22,8 @@ const VolEditInfo = () => {
   const submit = (e) => {
     const userId = voldata._id
     e.preventDefault()
-    axios.put(`http://localhost:3002/editVol/${userId}`, { username, email, password, organizationName, organizationHead, whatYouProvide, aboutOrganization, numberOfWorkers, experience, licence, contact1, contact2, tollFreeNumber, address })
+    axios.put(`http://localhost:3423/editVol/${userId}`, { username, email, password, organizationName, organizationHead, whatYouProvide, aboutOrganization, numberOfWorkers, experience, licence, contact1, contact2, tollFreeNumber, address })
       .then((data) => {
-        // console.log(userData._id)
-        // console.log(userId)
         console.log(data.data)
         setVolData(data.data)
         setSuccess(true)
@@ -48,7 +48,7 @@ const VolEditInfo = () => {
       <div className={failed ? 'alert alert-danger w-[300px] text-center' : 'd-none'} role="alert">
         <FontAwesomeIcon icon={faCircleXmark} className='mr-3' />Failed to Save
       </div>
-      <div className="circle"></div>
+      <img src={logo} className="circle" />
       <strong>HelpYours !</strong>
       <div className="organization-form mt-5 d-flex flex-column justify-content-start p-3">
         <strong className="mb-4" style={{ fontSize: "24px" }}>

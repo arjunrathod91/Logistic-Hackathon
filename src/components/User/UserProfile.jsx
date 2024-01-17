@@ -5,6 +5,7 @@ import { faPhone } from '@fortawesome/free-solid-svg-icons'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import { MyContext } from '../../Contexts/AllContext'
+import Footer from './Footer'
 
 const UserProfile = () => {
 
@@ -23,14 +24,13 @@ const UserProfile = () => {
                         <p>Email: {userData.email}</p>
                     </div>
                 </div>
-                <div className='container-fluid center-flex flex-col mt-10'>
-                    <div>
+                <div className='container-flui mt-10 px-10'>
                         <strong>Location : {userData.location}</strong>
                         <p><FontAwesomeIcon icon={faPhone} className='mr-2'/> Contact : {userData.contact}</p>
                         <Link to="/editinfo"><button className='' style={{backgroundColor:"teal",color:"white",borderRadius:"10px"}}>Edit Information</button></Link>
-                    </div>
                 </div>
             </div>
+            <Footer/>
         </div>
   )
 }

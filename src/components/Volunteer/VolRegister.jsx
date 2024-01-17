@@ -3,6 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { MyContext } from "../../Contexts/AllContext";
 import io from 'socket.io-client';
+import logo from '../../assets/logo.png'
 
 const VolRegister = () => {
   const {setUsername,setEmail,setPassword,setConfirmPassword} = useContext(MyContext)
@@ -14,43 +15,10 @@ const VolRegister = () => {
     navigate("/volorganization")
   }
 
-  // useEffect(() => {
-  //   const socket = io('http://localhost:3002'); // Replace with your backend URL
-  //   // Socket events
-  //   socket.on('connect', () => {
-  //     console.log('Connected to server');
-  //   });
-
-  //   socket.on('disconnect', () => {
-  //     console.log('Disconnected from server');
-  //   });
-
-  //   // Add more socket event listeners as needed
-
-  //   // Clean up socket connection on unmount
-  //   return () => {
-  //     socket.disconnect();
-  //   };
-  // }, []);
-
-  // useEffect(()=>{]
-
-  //   axios.get('http://localhost:3002/getVol')
-  //   .then(detail=>console.log(detail))
-  //   .catch(err=>console.log(err))
-  // },[])
-  const update=async (e)=>{
-    
-
-  }
-
-
-
-  
   return (
     <>
       <div  className="vol-reg container d-flex flex-column justify-content-center align-items-center pt-3">
-        <div className="circle"></div>
+      <img src={logo} alt="" className="circle" />
         <div className="text-center">
           <h4 className="fw-bold mb-4">HelpYours!</h4>
         </div>

@@ -34,15 +34,13 @@ const VolProfile = () => {
                         <p>Experience : {voldata.experience}</p>
                         <p>licence : {voldata.licence}</p>
                     </div>
-                    <div>
+                    <div className='container-fluid'>
                         <strong  style={{fontSize:'20px',fontWeight:"bold"}}>Location : {voldata.address}</strong>
-                        <div>
                             <span style={{fontSize:'20px',fontSize:'20px'}}>Contact</span>
                             <p><FontAwesomeIcon icon={faPhone} className='mr-2' /> Contact 1 : {voldata.contact1}</p>
                             <p><FontAwesomeIcon icon={faPhone} className='mr-2' /> Contact 2 : {voldata.contact2}</p>
                             <p>Toll Free Number : {voldata.tollFreeNumber}</p>
                             <p>Email : {voldata.email}</p>
-                        </div>
                         <Link to="/vol-editinfo"><button style={{ backgroundColor: "teal", color: "white", borderRadius: "10px" }}>Edit Information</button></Link>
                     </div>
 

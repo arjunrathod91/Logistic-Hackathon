@@ -4,6 +4,7 @@ import axios from 'axios';
 import { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom'
 import { MyContext } from '../../Contexts/AllContext';
+import logo from '../../assets/logo.png'
 
 const VolLogin = () => {
   const {voldata,setVolData} = useContext(MyContext)
@@ -16,7 +17,7 @@ const VolLogin = () => {
   const [password, setPassword] = useState('')
   const submit = (e) => {
     e.preventDefault();
-    axios.get('http://localhost:3002/getVolunteer', {
+    axios.get('http://localhost:3423/getVolunteer', {
       params: { email, password }
     })
       .then((response) => {
@@ -45,7 +46,7 @@ const VolLogin = () => {
       <div className={failed ? 'alert alert-danger w-[300px] text-center' : 'd-none'} role="alert">
         <FontAwesomeIcon icon={faCircleXmark} className='mr-3' />Login Failed
       </div>
-      <div className="circle"></div>
+      <img src={logo} className='circle' />
       <div className="text-center">
         <h4 className="fw-bold">HelpYours!</h4>
       </div>

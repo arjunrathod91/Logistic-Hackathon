@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { MyContext } from '../../Contexts/AllContext'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleCheck, faCircleXmark } from '@fortawesome/free-solid-svg-icons'
+import logo from '../../assets/logo.png'
 
 const Login = () => {
   const [success, setSuccess] = useState(false)
@@ -15,7 +16,7 @@ const Login = () => {
   const submit = (e) => {
     e.preventDefault();
 
-    axios.get('http://localhost:3002/getUser', {
+    axios.get('http://localhost:3423/getUser', {
       params: { email, password }
     })
       .then((response) => {
@@ -43,7 +44,7 @@ const Login = () => {
       <div className={failed ? 'alert alert-danger w-[300px] text-center' : 'd-none'} role="alert">
       <FontAwesomeIcon icon={faCircleXmark} className='mr-3'/>Login Failed
       </div>
-      <div className="circle"></div>
+      <img src={logo} className="circle" />
       <div className="text-center">
         <h4 className="fw-bold">HelpYours!</h4>
       </div>
