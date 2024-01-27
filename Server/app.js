@@ -12,7 +12,7 @@ const server = http.createServer(app);
 app.use(express.json())
 app.use(cors())
 
-mongoose.connect('mongodb+srv://arjunrathod91:arjunrathod91@helpyourswebsite.a13bvd6.mongodb.net/test?retryWrites=true&w=majority')
+mongoose.connect(process.env.MONGO_URL)
 
 app.post('/newUser',(req,res)=>{
   User.create(req.body)
