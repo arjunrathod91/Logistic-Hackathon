@@ -16,7 +16,7 @@ const Mainpage = () => {
     e.preventDefault()
     const userId = item._id
     console.log(userId)
-    axios.get(`http://localhost:3423/userDetail/${userId}`)
+    axios.get(`http://localhost:9000/userDetail/${userId}`)
     .then(result=>{
       console.log(result.data)
       setUserData(result.data)
@@ -28,7 +28,7 @@ const Mainpage = () => {
   useEffect(()=>{
     const area = voldata.area
     console.log(area)
-    axios.get('http://localhost:3423/newRequest',{
+    axios.get('http://localhost:9000/newRequest',{
       params:{area}
     })
     .then((data)=>{

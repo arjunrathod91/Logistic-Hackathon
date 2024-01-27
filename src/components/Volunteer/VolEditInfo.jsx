@@ -22,7 +22,7 @@ const VolEditInfo = () => {
   const submit = (e) => {
     const userId = voldata._id
     e.preventDefault()
-    axios.put(`http://localhost:3423/editVol/${userId}`, { username, email, password, organizationName, organizationHead, whatYouProvide, aboutOrganization, numberOfWorkers, experience, licence, contact1, contact2, tollFreeNumber, address })
+    axios.put(`http://localhost:9000/editVol/${userId}`, { username, email, password, organizationName, organizationHead, whatYouProvide, aboutOrganization, numberOfWorkers, experience, licence, contact1, contact2, tollFreeNumber, address })
       .then((data) => {
         console.log(data.data)
         setVolData(data.data)

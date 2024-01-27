@@ -7,15 +7,12 @@ const Request = require('./Models/Request')
 const socketIo = require('socket.io');
 const http = require('http');
 const dotenv = require('dotenv').config();
-
 const app = express()
 const server = http.createServer(app);
-const io = socketIo(server);
 app.use(express.json())
 app.use(cors())
-const port = process.env.PORT || 3002
 
-mongoose.connect('mongodb://localhost:27017/Logistics')
+mongoose.connect('mongodb+srv://arjunrathod91:arjunrathod91@helpyourswebsite.a13bvd6.mongodb.net/test?retryWrites=true&w=majority')
 
 app.post('/newUser',(req,res)=>{
   User.create(req.body)
@@ -157,6 +154,6 @@ app.put('/editVol/:userId', (req,res)=>{
       .catch(err=>res.json(err))
       })       
 
-app.listen(port,()=>{
-    console.log(`server is running at ${port}`)
+app.listen(process.env.PORT,()=>{
+    console.log(`server is running at ${process.env.PORT}`)
 })

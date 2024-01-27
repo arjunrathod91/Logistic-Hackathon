@@ -16,7 +16,7 @@ const Login = () => {
   const submit = (e) => {
     e.preventDefault();
 
-    axios.get('http://localhost:3423/getUser', {
+    axios.get('http://localhost:9000/getUser', {
       params: { email, password }
     })
       .then((response) => {

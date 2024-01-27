@@ -24,7 +24,7 @@ const Login = () => {
 
   const submitData=(e)=>{
     e.preventDefault()
-    axios.post('http://localhost:3423/newUser',{username,email,password,confirmpassword,location,contact})
+    axios.post('http://localhost:9000/newUser',{username,email,password,confirmpassword,location,contact})
     .then(data=>{
       console.log(data.data)
       setUserData(data.data)

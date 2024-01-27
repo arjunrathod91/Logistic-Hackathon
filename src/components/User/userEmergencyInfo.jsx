@@ -23,7 +23,7 @@ const UserEmergencyInfo = () => {
 
   const sendData = (e) => {
     e.preventDefault()
-      axios.post('http://localhost:3423/sendRequest', { name, contact, location, help })
+      axios.post('http://localhost:9000/sendRequest', { name, contact, location, help })
         .then(data => {
           console.log(data.data)
           setRequestData(data.data)

@@ -23,7 +23,7 @@ const EditInfo = () => {
 
   const submit = (e) => {
     e.preventDefault()
-    axios.put(`http://localhost:3423/editUser/${userId}`, { username, email, password, contact, location })
+    axios.put(`http://localhost:9000/editUser/${userId}`, { username, email, password, contact, location })
       .then((data) => {
         console.log(userData._id)
         console.log(userId)
