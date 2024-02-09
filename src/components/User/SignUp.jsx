@@ -24,7 +24,7 @@ const Login = () => {
 
   const submitData = (e) => {
     e.preventDefault()
-    let userData = [...JSON.parse(localStorage.getItem('user'))] || []
+    let userData = []
     const obj =
       {
         'id':userId,
