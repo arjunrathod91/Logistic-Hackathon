@@ -3,13 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { faHandHoldingHeart } from '@fortawesome/free-solid-svg-icons';
 import logo from '../assets/logo.png'
-import { useEffect } from "react";
 const ChooseAuth = () => {
-  useEffect(()=>{
-    localStorage.setItem('user',JSON.stringify([]))
-    localStorage.setItem('request',JSON.stringify([]))
-    localStorage.setItem('volunteer',JSON.stringify([]))
-  },)
   return (
     <>
       <div className=" d-flex flex-column justify-content-center align-items-center pt-5 " >

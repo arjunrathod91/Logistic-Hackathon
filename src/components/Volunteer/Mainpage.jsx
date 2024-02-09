@@ -15,9 +15,11 @@ const Mainpage = () => {
   const userInfo=(e,item)=>{
     e.preventDefault()
     const volId = item.id
+    const area = voldata.area
     console.log(volId)
     const data = JSON.parse(localStorage.getItem('request'))
-      setUserData(data)
+    const newdata = data.find(data=>data.id == volId)
+      setUserData(newdata)
       navigate('/user-info')
   }
 
@@ -26,7 +28,6 @@ const Mainpage = () => {
     const area = voldata.area
     console.log(area)
     const data = requests.filter(data=>data.help === area)
-    console.log(data)
     setRequest(data)
   },[voldata])
 

@@ -3,18 +3,12 @@ import Header from './Header'
 import axios from 'axios';
 import { useContext, useEffect, useState } from 'react';
 import { MyContext } from '../../Contexts/AllContext';
-import Footer from './Footer';
 
 function NearbyHelpers() {
 
-  const { voldata, setVolData,requestData, setRequestData} = useContext(MyContext)
-  const [nearbyVol, setNearbyVol] = useState([])
+  const { voldata, setVolData,requestData, setRequestData,nearbyVol, setNearbyVol} = useContext(MyContext)
+
   const navigate = useNavigate()
-  useEffect(() => {
-    const obj = JSON.parse(localStorage.getItem('volunteer'))
-    console.log(obj)
-    setNearbyVol(obj)
-  },[requestData])
 
   const clickVol = (e, item) => {
     e.preventDefault()
@@ -22,18 +16,22 @@ function NearbyHelpers() {
     console.log(item.id)
     const userId = item.id
     const data = JSON.parse(localStorage.getItem('volunteer'))
-    setVolData(data)
+    const volunteerdata = data.find(data=>data.id == userId)
+    setVolData(volunteerdata[0])
     navigate('/volunteerprofile')
   }
-
-
+  useEffect(() => {
+    const obj = JSON.parse(localStorage.getItem('volunteer'))
+    setNearbyVol(obj)
+  },)
   return (
     <div className="container">
       <Header />
       <h4>Nearby Helpers</h4>
-      <div className="row container-fluid">
+      {/* <div className="row container-fluid">
         {nearbyVol.map(()=>(
-          <div className="col-lg-4 col-md-6 mb-4 " onClick={(e)=>clickVol(e,item)}>
+          <div className="col-lg-4 col-md-6 mb-4 " onClick={(e)=>clickVol(e,item)} > 
+
           <div className="card custom-card">
             <div className="card-body bg-secondary d-flex gap-5" style={{ backgroundColor: "#D9D9D9" }}>
               <div className="circle custom-circle flex-2 ml-3"><img src={item.profile} alt="" /></div>
@@ -46,8 +44,7 @@ function NearbyHelpers() {
           </div>
         </div>
         ))}
-      </div>
-      <Footer/>
+      </div> */}
     </div>
   );
 }

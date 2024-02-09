@@ -1,7 +1,13 @@
 import {Link} from 'react-router-dom'
 import logo from '../assets/logo.png'
+import { useEffect } from 'react'
 
 const Hero = () => {
+  useEffect(()=>{
+    localStorage.setItem('user',JSON.stringify([]))
+    localStorage.setItem('request',JSON.stringify([]))
+    localStorage.setItem('volunteer',JSON.stringify([]))
+  },)
     return(
          <>
            <div className ='container d-flex flex-column justify-content-center align-items-center' style={{paddingTop:"100px"}}>
