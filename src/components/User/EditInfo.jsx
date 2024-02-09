@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, { useContext, useState } from 'react'
-import { Link, Navigate, useNavigate } from 'react-router-dom'
+import { Link, Navigate, json, useNavigate } from 'react-router-dom'
 import { MyContext } from '../../Contexts/AllContext'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleCheck, faCircleXmark } from '@fortawesome/free-solid-svg-icons'
@@ -17,31 +17,30 @@ const EditInfo = () => {
   const [password, setPassword] = useState('')
   const [contact, setContact] = useState('')
   const [location, setLocation] = useState('')
-  const userId = userData._id
+  const userId = userData.id
 
   const navigate = useNavigate()
 
   const submit = (e) => {
     e.preventDefault()
-    axios.put(`http://localhost:9000/editUser/${userId}`, { username, email, password, contact, location })
-      .then((data) => {
-        console.log(userData._id)
-        console.log(userId)
-        console.log(data.data)
-        setUserData(data.data)
+        const userDetail = JSON.parse(localStorage.getItem('user'))
+        console.log(userDetail)
+        const findIdx = userDetail.findIndex(item=>item.id == userId)
+        const updateData = {
+          'username':username,
+          'email':email,
+          'password':password,
+          'contact':contact,
+          'location':location
+        }
+        userDetail[findIdx] = updateData
+        localStorage.setItem('user', JSON.stringify(userDetail));
+        setUserData(updateData)
         setSuccess(true)
         setTimeout(() => {
           setSuccess(false)
           navigate('/userprofile')
         }, 3000)
-      })
-      .catch(err => {
-        console.log(err)
-        setFailed(true)
-        setTimeout(() => {
-          setFailed(false)
-        }, 2000) 
-      })
   }
   return (
     <div className="d-flex container-fluid vh-100 flex-column justify-content-center align-items-center">

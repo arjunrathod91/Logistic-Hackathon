@@ -20,25 +20,36 @@ const VolEditInfo = () => {
   const navigate = useNavigate()
 
   const submit = (e) => {
-    const userId = voldata._id
+    const volId = voldata.id
     e.preventDefault()
-    axios.put(`http://localhost:9000/editVol/${userId}`, { username, email, password, organizationName, organizationHead, whatYouProvide, aboutOrganization, numberOfWorkers, experience, licence, contact1, contact2, tollFreeNumber, address })
-      .then((data) => {
-        console.log(data.data)
-        setVolData(data.data)
         setSuccess(true)
+        const volunteerDetail = JSON.parse(localStorage.getItem('volunteer'))
+        console.log(userDetail)
+        const findIdx = volunteerDetail.findIndex(item=>item.id == userId)
+        const updateData = {
+        'username':username,
+        'email':email,
+        'password':password,
+        'confirmpassword':confirmpassword,
+        'organizationName':organizationName,
+        'organizationHead':organizationHead,
+        'aboutOrganization':aboutOrganization,
+        'area':area,
+        'numberOfWorkers':numberOfWorkers,
+        'experience':experience,
+        'licence':licence,
+        'contact1':contact1,
+        'contact2':contact2,
+        'tollFreeNumber':tollFreeNumber,
+        'address':address
+        }
+        volunteerDetail[findIdx] = updateData
+        localStorage.setItem('volunteer', JSON.stringify(volunteerDetail));
+        setVolData(updateData)
         setTimeout(() => {
           setSuccess(false)
           navigate('/volprofile')
         }, 3000)
-      })
-      .catch(err => {
-        console.log(err)
-        setFailed(true)
-        setTimeout(() => {
-          setFailed(false)
-        }, 2000)
-      })
   }
   return (
     <div className="d-flex container-fluid flex-column justify-content-center align-items-center">
