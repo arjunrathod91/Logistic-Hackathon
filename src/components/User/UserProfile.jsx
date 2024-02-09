@@ -27,7 +27,6 @@ const UserProfile = () => {
                 <div className='container-flui mt-10 px-10'>
                         <strong>Location : {userData.location}</strong>
                         <p><FontAwesomeIcon icon={faPhone} className='mr-2'/> Contact : {userData.contact}</p>
-                        <Link to="/editinfo"><button className='' style={{backgroundColor:"teal",color:"white",borderRadius:"10px"}}>Edit Information</button></Link>
                 </div>
             </div>
             <Footer/>
