@@ -3,6 +3,7 @@ import Header from './Header'
 import axios from 'axios';
 import { useContext, useEffect, useState } from 'react';
 import { MyContext } from '../../Contexts/AllContext';
+import Footer from './Footer';
 
 function NearbyHelpers() {
 
@@ -21,7 +22,6 @@ function NearbyHelpers() {
     console.log(item.id)
     const userId = item.id
     const data = JSON.parse(localStorage.getItem('volunteer'))
-    console.log(data)
     setVolData(data)
     navigate('/volunteerprofile')
   }
@@ -32,21 +32,22 @@ function NearbyHelpers() {
       <Header />
       <h4>Nearby Helpers</h4>
       <div className="row container-fluid">
-        {nearbyVol.map((item) => (
+        {nearbyVol.map(()=>(
           <div className="col-lg-4 col-md-6 mb-4 " onClick={(e)=>clickVol(e,item)}>
-            <div className="card custom-card">
-              <div className="card-body bg-secondary d-flex gap-5" style={{ backgroundColor: "#D9D9D9" }}>
-                <div className="circle custom-circle flex-2 ml-3"><img src={item.profile} alt="" /></div>
-                <div className='flex-1'>
-                <p className="card-title mb-1"><span className='fw-bold'>Name:</span>{item.username}</p>
-                <p className="card-text mb-1"><span className='fw-bold'>Service:</span>{item.area}</p>
-                <p className="card-text"><span className='fw-bold'>Location:</span>{item.address}</p>
-                </div>
+          <div className="card custom-card">
+            <div className="card-body bg-secondary d-flex gap-5" style={{ backgroundColor: "#D9D9D9" }}>
+              <div className="circle custom-circle flex-2 ml-3"><img src={item.profile} alt="" /></div>
+              <div className='flex-1'>
+              <p className="card-title mb-1"><span className='fw-bold'>Name:</span>{item.username}</p>
+              <p className="card-text mb-1"><span className='fw-bold'>Service:</span>{item.area}</p>
+              <p className="card-text"><span className='fw-bold'>Location:</span>{item.address}</p>
               </div>
             </div>
           </div>
+        </div>
         ))}
       </div>
+      <Footer/>
     </div>
   );
 }
