@@ -24,7 +24,6 @@ const Login = () => {
 
   const submitData = (e) => {
     e.preventDefault()
-    let userData = [...JSON.parse(localStorage.getItem('user'))] || []
     const obj =
       {
         'id':userId,
@@ -35,8 +34,7 @@ const Login = () => {
         'location': location,
         'contact': contact
       }  
-      userData.push(obj)
-    localStorage.setItem('user',JSON.stringify(userData))
+    localStorage.setItem('user',JSON.stringify(obj))
     console.log(obj)
     setSuccess(true)
     setTimeout(() => {

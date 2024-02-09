@@ -18,9 +18,8 @@ const VolLogin = () => {
   const submit = (e) => {
     e.preventDefault();
     const volunteerData = JSON.parse(localStorage.getItem('volunteer'))
-    const quory = volunteerData.filter(data=>data.email === email && data.password === password)
-    console.log(quory[0])
-    setVolData(quory[0])
+    console.log(volunteerData)
+    setVolData(volunteerData)
     setSuccess(true)
     setTimeout(() => {
       navigate('/mainpage')

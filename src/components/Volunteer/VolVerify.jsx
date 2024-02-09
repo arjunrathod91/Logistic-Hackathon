@@ -26,7 +26,6 @@ const VolVerify = () => {
   const navigate = useNavigate()
   const sendEmail = (e) => {
     e.preventDefault();
-    const volunteerData = [JSON.parse(localStorage.getItem('volunteer'))] || []
       const obj = {
         'id':volId,
         'username':username,
@@ -45,7 +44,6 @@ const VolVerify = () => {
         'tollFreeNumber':tollFreeNumber,
         'address':address
       }
-      volunteerData.push(obj)
       localStorage.setItem('volunteer',JSON.stringify(volunteerData))
       setVolData(obj)
     setSubmitted(true)

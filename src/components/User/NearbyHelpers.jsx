@@ -21,9 +21,8 @@ function NearbyHelpers() {
     console.log(item.id)
     const userId = item.id
     const data = JSON.parse(localStorage.getItem('volunteer'))
-    const dataItem = data.find(data=>data.id == userId)
-    console.log(dataItem)
-    setVolData(dataItem)
+    console.log(data)
+    setVolData(data)
     navigate('/volunteerprofile')
   }
 

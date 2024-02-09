@@ -16,9 +16,8 @@ const Login = () => {
   const submit = (e) => {
     e.preventDefault();
     const userdata = JSON.parse(localStorage.getItem('user'))
-    const quory = userdata.filter(data=>data.email === email && data.password === password)
-    console.log(quory[0])
-    setUserData(quory[0])
+    console.log(userData)
+    setUserData(userData)
     setSuccess(true)
     setTimeout(() => {
       navigate('/userpage')
