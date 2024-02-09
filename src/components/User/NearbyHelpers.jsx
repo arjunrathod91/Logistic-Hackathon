@@ -10,28 +10,21 @@ function NearbyHelpers() {
   const [nearbyVol, setNearbyVol] = useState([])
   const navigate = useNavigate()
   useEffect(() => {
-    const help = requestData.help
-    axios.get('http://localhost:9000/nearbyVol',{
-      params:{help}
-    })
-      .then((data) => {
-        setNearbyVol(data.data)
-      })
-      .catch(err => console.log(err))
+    const obj = JSON.parse(localStorage.getItem('volunteer'))
+    console.log(obj)
+    setNearbyVol(obj)
   },[requestData])
 
   const clickVol = (e, item) => {
     e.preventDefault()
     console.log('clicked')
-    console.log(item._id)
-    const userId = item._id
-    axios.get(`http://localhost:9000/volunteerData/${userId}`)
-    .then(data=>{
-      console.log(data.data)
-      setVolData(data.data)
-      navigate('/volunteerprofile')
-    })
-    .catch(err=>console.log(err))
+    console.log(item.id)
+    const userId = item.id
+    const data = JSON.parse(localStorage.getItem('volunteer'))
+    const dataItem = data.find(data=>data.id == userId)
+    console.log(dataItem)
+    setVolData(dataItem)
+    navigate('/volunteerprofile')
   }
 
 

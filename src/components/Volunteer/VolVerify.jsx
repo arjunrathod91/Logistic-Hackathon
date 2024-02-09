@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, json, useNavigate } from "react-router-dom";
 import { MyContext } from "../../Contexts/AllContext";
 import { useContext, useRef, useState } from "react";
 import axios from "axios";
@@ -7,6 +7,7 @@ import emailjs from "@emailjs/browser";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleCheck, faCircleXmark } from "@fortawesome/free-solid-svg-icons";
 import logo from '../../assets/logo.png'
+import { v4 as uuidv4 } from 'uuid';
 
 const VolVerify = () => {
 
@@ -16,6 +17,7 @@ const VolVerify = () => {
   const [verifyOtp, setVerifyOtp] = useState()
   const [successAlert, setSuccessAlert] = useState(false)
   const [failed, setFailed] = useState(false)
+  const volId = uuidv4()
 
   const ref = useRef();
   const formRef = useRef();
@@ -24,13 +26,28 @@ const VolVerify = () => {
   const navigate = useNavigate()
   const sendEmail = (e) => {
     e.preventDefault();
-    axios.post('http://localhost:9000/setVol', { username, email, password, confirmpassword, organizationName, organizationHead, aboutOrganization, area, numberOfWorkers, experience, licence, contact1, contact2, tollFreeNumber, address})
-    .then(details => {
-      console.log(details.data)
-      setVolData(details.data)
-      console.log(voldata)
-    })
-    .catch(err => console.log(err))
+    const volunteerData = [JSON.parse(localStorage.getItem('volunteer'))] || []
+      const obj = {
+        'id':volId,
+        'username':username,
+        'email':email,
+        'password':password,
+        'confirmpassword':confirmpassword,
+        'organizationName':organizationName,
+        'organizationHead':organizationHead,
+        'aboutOrganization':aboutOrganization,
+        'area':area,
+        'numberOfWorkers':numberOfWorkers,
+        'experience':experience,
+        'licence':licence,
+        'contact1':contact1,
+        'contact2':contact2,
+        'tollFreeNumber':tollFreeNumber,
+        'address':address
+      }
+      volunteerData.push(obj)
+      localStorage.setItem('volunteer',JSON.stringify(volunteerData))
+      setVolData(obj)
     setSubmitted(true)
     console.log(otp)
 

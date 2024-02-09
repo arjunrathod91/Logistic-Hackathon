@@ -17,25 +17,14 @@ const VolLogin = () => {
   const [password, setPassword] = useState('')
   const submit = (e) => {
     e.preventDefault();
-    axios.get('http://localhost:9000/getVolunteer', {
-      params: { email, password }
-    })
-      .then((response) => {
-        console.log(response.data);
-        setVolData(response.data);
-        setSuccess(true)
-        setTimeout(() => {
-          navigate('/mainpage')
-        }, 3000)
-      })
-      .catch((error) => {
-        console.error('Error fetching user:', error);
-        setFailed(true)
-        setTimeout(() => {
-          setFailed(false)
-        }, 2000)
-      });
-
+    const volunteerData = JSON.parse(localStorage.getItem('volunteer'))
+    const quory = volunteerData.filter(data=>data.email === email && data.password === password)
+    console.log(quory[0])
+    setVolData(quory[0])
+    setSuccess(true)
+    setTimeout(() => {
+      navigate('/mainpage')
+    }, 3000)
   }
 
   return (

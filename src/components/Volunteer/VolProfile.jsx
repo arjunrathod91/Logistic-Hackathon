@@ -36,7 +36,7 @@ const VolProfile = () => {
                     </div>
                     <div className='container-fluid'>
                         <strong  style={{fontSize:'20px',fontWeight:"bold"}}>Location : {voldata.address}</strong>
-                            <span style={{fontSize:'20px',fontSize:'20px'}}>Contact</span>
+                            <span style={{fontSize:'20px'}}>Contact</span>
                             <p><FontAwesomeIcon icon={faPhone} className='mr-2' /> Contact 1 : {voldata.contact1}</p>
                             <p><FontAwesomeIcon icon={faPhone} className='mr-2' /> Contact 2 : {voldata.contact2}</p>
                             <p>Toll Free Number : {voldata.tollFreeNumber}</p>
