@@ -24,6 +24,10 @@ const Login = () => {
 
   const submitData = (e) => {
     e.preventDefault()
+<<<<<<< HEAD
+=======
+    let userData = []
+>>>>>>> bc7d5f028ee5283745e35a7d422492fad3bb6b10
     const obj =
       {
         'id':userId,
