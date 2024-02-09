@@ -23,9 +23,6 @@ const EditInfo = () => {
 
   const submit = (e) => {
     e.preventDefault()
-        const userDetail = JSON.parse(localStorage.getItem('user'))
-        console.log(userDetail)
-        const findIdx = userDetail.findIndex(item=>item.id == userId)
         const updateData = {
           'username':username,
           'email':email,
@@ -33,8 +30,7 @@ const EditInfo = () => {
           'contact':contact,
           'location':location
         }
-        userDetail[findIdx] = updateData
-        localStorage.setItem('user', JSON.stringify(userDetail));
+        localStorage.setItem('user', JSON.stringify(updateData));
         setUserData(updateData)
         setSuccess(true)
         setTimeout(() => {

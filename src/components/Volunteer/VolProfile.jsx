@@ -41,7 +41,6 @@ const VolProfile = () => {
                             <p><FontAwesomeIcon icon={faPhone} className='mr-2' /> Contact 2 : {voldata.contact2}</p>
                             <p>Toll Free Number : {voldata.tollFreeNumber}</p>
                             <p>Email : {voldata.email}</p>
-                        <Link to="/vol-editinfo"><button style={{ backgroundColor: "teal", color: "white", borderRadius: "10px" }}>Edit Information</button></Link>
                     </div>
 
                 </div>

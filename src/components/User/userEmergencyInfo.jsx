@@ -23,7 +23,7 @@ const UserEmergencyInfo = () => {
   const navigate = useNavigate()
 
   const sendData = (e) => {
-    let userRequest = [...JSON.parse(localStorage.getItem('request'))] || []
+    const requestdata = [...JSON.parse(localStorage.getItem('request'))]
     e.preventDefault()
           const obj = {
             'id':requestId,
@@ -32,8 +32,8 @@ const UserEmergencyInfo = () => {
             'location':location,
             'help':help
           }
-          userRequest.push(obj)
-          localStorage.setItem('request',JSON.stringify(userRequest))
+          requestdata.push(obj)
+          localStorage.setItem('request',JSON.stringify(requestdata))
           setSuccess(true)
           setTimeout(()=>{
             setSuccess(false)

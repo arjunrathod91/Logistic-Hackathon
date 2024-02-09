@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { MyContext } from "../../Contexts/AllContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -23,8 +23,8 @@ const Login = () => {
 
 
   const submitData = (e) => {
+    const userdata = [...JSON.parse(localStorage.getItem('user'))]
     e.preventDefault()
-    let userData = [...JSON.parse(localStorage.getItem('user'))] || []
     const obj =
       {
         'id':userId,
@@ -34,10 +34,11 @@ const Login = () => {
         'confirmpassword': confirmpassword,
         'location': location,
         'contact': contact
-      }  
-      userData.push(obj)
-    localStorage.setItem('user',JSON.stringify(userData))
+      }   
+    userdata.push(obj)   
+    localStorage.setItem('user',JSON.stringify(userdata))
     console.log(obj)
+    setUserData(obj)
     setSuccess(true)
     setTimeout(() => {
       navigate('/verify')

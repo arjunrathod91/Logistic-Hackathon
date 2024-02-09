@@ -23,9 +23,6 @@ const VolEditInfo = () => {
     const volId = voldata.id
     e.preventDefault()
         setSuccess(true)
-        const volunteerDetail = JSON.parse(localStorage.getItem('volunteer'))
-        console.log(userDetail)
-        const findIdx = volunteerDetail.findIndex(item=>item.id == userId)
         const updateData = {
         'username':username,
         'email':email,
@@ -44,7 +41,7 @@ const VolEditInfo = () => {
         'address':address
         }
         volunteerDetail[findIdx] = updateData
-        localStorage.setItem('volunteer', JSON.stringify(volunteerDetail));
+        localStorage.setItem('volunteer', JSON.stringify(updateData));
         setVolData(updateData)
         setTimeout(() => {
           setSuccess(false)

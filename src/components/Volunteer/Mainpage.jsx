@@ -17,8 +17,7 @@ const Mainpage = () => {
     const volId = item.id
     console.log(volId)
     const data = JSON.parse(localStorage.getItem('request'))
-    const dataItem = data.find(data=>data.id == item.id)
-      setUserData(dataItem)
+      setUserData(data)
       navigate('/user-info')
   }
 
