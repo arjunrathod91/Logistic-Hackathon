@@ -7,10 +7,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleCheck, faCircleXmark } from '@fortawesome/free-solid-svg-icons';
 import { FormSelect } from 'react-bootstrap';
 import { MyContext } from '../../Contexts/AllContext';
+import { v4 as uuidv4 } from 'uuid';
 
 
 const UserEmergencyInfo = () => {
   const [success, setSuccess] = useState(false)
+  const requestId = uuidv4()
   const [failed, setFailed] = useState(false)
   const [name, setName] = useState('')
   const [contact, setContact] = useState('')
@@ -18,30 +20,26 @@ const UserEmergencyInfo = () => {
   const [help, setHelp] = useState('')
 
   const {requestData,setRequestData} = useContext(MyContext)
-  // const socket = io('http://localhost:3002');
   const navigate = useNavigate()
 
   const sendData = (e) => {
+    let userRequest = [...JSON.parse(localStorage.getItem('request'))] || []
     e.preventDefault()
-      axios.post('http://localhost:9000/sendRequest', { name, contact, location, help })
-        .then(data => {
-          console.log(data.data)
-          setRequestData(data.data)
-          console.log(requestData)
+          const obj = {
+            'id':requestId,
+            'name':name,
+            'contact':contact,
+            'location':location,
+            'help':help
+          }
+          userRequest.push(obj)
+          localStorage.setItem('request',JSON.stringify(userRequest))
           setSuccess(true)
           setTimeout(()=>{
             setSuccess(false)
             navigate('/nearbyhelpers')
           },3000)
-          
-        })
-        .catch(err => {
-          console.log(err)
-          setFailed(true)
-          setTimeout(()=>{
-            setFailed(false)
-          },3000)})
-    }
+        }
   return (
     <div className='container'>
       <Header />

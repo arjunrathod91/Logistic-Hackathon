@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import VolHeader from './VolHeader'
-import { useNavigate } from 'react-router-dom'
+import { json, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { MyContext } from '../../Contexts/AllContext'
 // import { io } from 'socket.io-client';
@@ -14,27 +14,22 @@ const Mainpage = () => {
 
   const userInfo=(e,item)=>{
     e.preventDefault()
-    const userId = item._id
-    console.log(userId)
-    axios.get(`http://localhost:9000/userDetail/${userId}`)
-    .then(result=>{
-      console.log(result.data)
-      setUserData(result.data)
+    const volId = item.id
+    console.log(volId)
+    const data = JSON.parse(localStorage.getItem('request'))
+    const dataItem = data.find(data=>data.id == item.id)
+      setUserData(dataItem)
       navigate('/user-info')
-    })
-    .catch(err=>console.log(err))
   }
 
   useEffect(()=>{
+    const requests = JSON.parse(localStorage.getItem('request'))
     const area = voldata.area
     console.log(area)
-    axios.get('http://localhost:9000/newRequest',{
-      params:{area}
-    })
-    .then((data)=>{
-      setRequest(data.data)})
-    .catch(err=>console.log(err))
-  },[request])
+    const data = requests.filter(data=>data.help === area)
+    console.log(data)
+    setRequest(data)
+  },[voldata])
 
   return (
     <div className="container">
